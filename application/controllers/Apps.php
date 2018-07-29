@@ -7,48 +7,67 @@ class Apps extends CI_Controller
         $this->load->model("Apps_model");
         $this->load->helper('url');
         $this->load->library('form_validation');
+
+        $this->load->model('menu_m');
+
     }
+
 
     public function index()
     {
-        /* Load form helper */
-        $this->load->helper(array('form'));
+        $data = $this->menu_m->get_menus();
+        if ($this->input->server('REQUEST_METHOD') == 'GET'){
 
-        /* Load form validation library */
-        $this->load->library('form_validation');
+//            print_r($data);
+//            exit();
 
-        /* Set validation rule for name field in the form */
-        $this->form_validation->set_rules('name', 'name', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|max_length[50]');
-        $this->form_validation->set_rules('text', 'text', 'trim|required');
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('apps/index.php');
+            $this->load->view('apps/index.php', ['menu' => $data]);
         }
-        else {
+        else if ($this->input->server('REQUEST_METHOD') == 'POST'){
 
-            $this->config->load('custom_config');
 
-            $email_config = Array(
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_port' => '465',
-                'smtp_user' =>  $this->config->item('smtp_user'),
-                'smtp_pass' => $this->config->item('smtp_pass'),
-                'mailtype' => 'html',
-                'starttls' => true,
-                'newline' => "\r\n"
-            );
+            /* Load form helper */
+            $this->load->helper(array('form'));
 
-            $this->load->library('email', $email_config);
+            /* Load form validation library */
+            $this->load->library('form_validation');
 
-            $this->email->from($this->input->post('email'), $this->input->post('name'));
-            $this->email->to( $this->config->item('mail_to'));
-            $this->email->subject($this->input->post('name'));
-            $this->email->message($this->input->post('text'));
-            $this->email->send();
 
-            $this->load->view('apps/index.php');
+            /* Set validation rule for name field in the form */
+            $this->form_validation->set_rules('name', 'name', 'trim|required|max_length[50]');
+            $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|max_length[50]');
+            $this->form_validation->set_rules('text', 'text', 'trim|required');
+
+            if ($this->form_validation->run() == FALSE) {
+
+                $this->load->view('apps/index',  ['menu' => $data, validation_errors()] );
+            }
+            else {
+
+                $this->config->load('custom_config');
+
+                $email_config = Array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => '465',
+                    'smtp_user' =>  $this->config->item('smtp_user'),
+                    'smtp_pass' => $this->config->item('smtp_pass'),
+                    'mailtype' => 'html',
+                    'starttls' => true,
+                    'newline' => "\r\n"
+                );
+
+                $this->load->library('email', $email_config);
+
+                $this->email->from($this->input->post('email'), $this->input->post('name'));
+                $this->email->to( $this->config->item('mail_to'));
+                $this->email->subject($this->input->post('name'));
+                $this->email->message($this->input->post('text'));
+                $this->email->send();
+
+                $this->load->view('apps/index', ['menu' => $data]);
+            }
+
         }
 
     }
@@ -67,8 +86,8 @@ class Apps extends CI_Controller
         foreach($apps->result() as $r) {
 
             $array = [
-                '<a href="#">'.$r->name.'</a>',
-                $r->desc,
+                '<a href="'.base_url('MyApp/index/').$r->id.'">'.$r->name.'</a>',
+                 substr($r->desc, 0, 60)."..",
                 '<img src="'.base_url().'assets/images/apps/'.$r->img.'" style="width:100%;max-width:300px" title="'.$r->img.'" class="myImg"></img>',
                 '<a href="'.$r->url.'">'.$r->url.'</a>',
                 $r->type

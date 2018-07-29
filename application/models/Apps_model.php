@@ -14,4 +14,19 @@ class Apps_Model extends CI_Model
         return $this->db->get("applications");
     }
 
+    public function get_app($id){
+        $this->db->where('id', $id);
+        return $this->db->get("applications")->row();
+    }
+
+    public function get_app_comments($id)
+    {
+        $this->db->select('*')
+            ->where('application_id', $id);
+      //  $this->db->group_by('parent_id');
+        $query = $this->db->get('comments');
+
+        return $query->result_array();
+
+    }
 }
