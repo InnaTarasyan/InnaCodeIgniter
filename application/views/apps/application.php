@@ -14,6 +14,8 @@
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
        <?php echo link_tag('assets/css/buttons.css'); ?>
        <?php echo link_tag('assets/css/comments.css'); ?>
+       <script type = 'text/javascript' src = "<?php echo base_url(); ?>assets/js/comment-reply.js"></script>
+       <script type = 'text/javascript' src = "<?php echo base_url(); ?>assets/js/myscripts.js"></script>
        <style>
            .responsive {
                width: 30%;
@@ -77,10 +79,12 @@
                            <!-- END TRACKBACK & PINGBACK -->
                            <div id="respond">
                                <h3 id="reply-title">Leave a <span>Reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">Cancel reply</a></small></h3>
-                               <form action="" method="post" id="commentform">
+                               <form action="<?= base_url(); ?>index.php/MyApp/index/<?= $application->id ?>#commentform" method="post" id="commentform">
 
                                    <p class="user-info comment-form-author"><label for="author">Name</label> <input id="name" name="name" type="text" value="" size="30" aria-required="true" /></p>
                                    <p class="user-info comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
+
+
                                    <p class="user-info comment-form-url"><label for="url">Website</label><input id="url" name="site" type="text" value="" size="30" /></p>
 
                                    <p class="comment-form-comment"><label for="comment">Your comment</label><textarea class="my-comment" id="comment" name="text" cols="45" rows="8"></textarea></p>
@@ -104,5 +108,6 @@
    </body>
    <footer>
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
    </footer>
 </html>

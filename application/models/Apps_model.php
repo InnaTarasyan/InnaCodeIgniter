@@ -29,4 +29,12 @@ class Apps_Model extends CI_Model
         return $query->result_array();
 
     }
+
+    public function add_comment($data){
+        $this->db->insert('comments', $data);
+
+        $insert_id = $this->db->insert_id();
+
+        return  $insert_id;
+    }
 }
