@@ -1,3 +1,10 @@
+
+<?php
+$user_id = $this->session->userdata('user_id');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

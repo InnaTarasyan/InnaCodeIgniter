@@ -1,3 +1,7 @@
+<?php
+   $user_id = $this->session->userdata('user_id');
+?>
+
 <html>
    <head>
        <title>App Display</title>
@@ -76,6 +80,7 @@
                            <br/>
 
 
+                           <?php if($user_id) { ?>
                            <!-- END TRACKBACK & PINGBACK -->
                            <div id="respond">
                                <h3 id="reply-title">Leave a <span>Reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">Cancel reply</a></small></h3>
@@ -98,6 +103,11 @@
                                </form>
                            </div>
                            <!-- #respond -->
+                           <?php } else { ?>
+                               <center><b><a href="<?= base_url('user/login_view'); ?>"> Please Log in to Leave a Reply! </a> </b></center>
+                           <?php } ?>
+
+
                        </div>
                        <!-- END COMMENTS -->
                    </div>
@@ -108,6 +118,5 @@
    </body>
    <footer>
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
    </footer>
 </html>

@@ -1,3 +1,7 @@
+<?php
+   $user_id=$this->session->userdata('user_id');
+?>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -17,6 +21,11 @@
                     <li> <a href="<?php echo base_url().$item->path;;?>"> <?= $item->title; ?> </a>  </li>
                 <?php  } ?>
             </ul>
+            <?php if(isset($user_id)) { ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="<?php echo base_url('user/user_logout');?>" > Logout </a> </li>
+                </ul>
+            <?php } ?>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>

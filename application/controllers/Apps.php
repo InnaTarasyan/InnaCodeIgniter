@@ -9,6 +9,7 @@ class Apps extends CI_Controller
         $this->load->library('form_validation');
 
         $this->load->model('menu_m');
+        $this->load->library('session');
 
     }
 

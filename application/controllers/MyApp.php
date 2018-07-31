@@ -9,6 +9,7 @@ class MyApp extends CI_Controller
         $this->load->model("Apps_model");
         $this->load->helper('url');
         $this->load->library('form_validation');
+        $this->load->library('session');
     }
 
     public function index($id){
