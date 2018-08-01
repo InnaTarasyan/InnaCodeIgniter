@@ -28,7 +28,8 @@ class Migration_Create_comments_table extends CI_Migration
             ),
             'user_id' => array(
                 'type' => 'INT',
-                'unsigned' => TRUE
+                'unsigned' => TRUE,
+                'null' => TRUE,
             ),
             'application_id' => array(
                 'type' => 'INT',
@@ -44,7 +45,8 @@ class Migration_Create_comments_table extends CI_Migration
             ),
             'site' => array(
                 'type' => 'VARCHAR',
-                'constraint' => '100'
+                'constraint' => '100',
+                'null' => TRUE,
             ),
             'created_at' => array('type' => 'timestamp'),
             'updated_at' => array('type' => 'timestamp')

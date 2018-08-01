@@ -152,6 +152,15 @@ class seed extends CI_Controller {
         ];
 
         $applications[] = [
+            'name' => 'JavaScript Programming MCQ',
+            'desc' => 'Wishing to enhance skills on JavaScript Programming? Wishing to test your knowledge to determine level of JavaScript Programming proficiency? Preparing for interviews? Preparing for entrance examinations? This test will be useful for all: Experienced, Freshers and Students. This test includes most of topics in JavaScript Programming.',
+            'img' => 'JavaScript_Programming_MCQ.jpg',
+            'url' => 'https://www.amazon.com/Inna-Tarasyan-JavaScript-Programming-MCQ/dp/B019AEMV7G/ref=sr_1_4?s=mobile-apps&ie=UTF8&qid=1531046218&sr=1-4',
+            'type' => 'apps',
+            'download_count' => 58
+        ];
+
+        $applications[] = [
             'name' => 'Linux MCQ.',
             'desc' => 'Wishing to enhance skills on Linux? Wishing to test your knowledge to determine level of Linux proficiency? Preparing for interviews? Preparing for entrance examinations? This test will be useful for all: Experienced, Freshers and Students. This test includes most of topics in Linux .',
             'img' => 'Linux_MCQ.jpg',
@@ -220,7 +229,7 @@ class seed extends CI_Controller {
             'name' => 'My Contact List.',
             'desc' => 'This application is designed for the following purposes: Add Contact Add Group Contact View Contact Details View SMS History View Call History View Contacts in Descending order Search Contact By Email Search Contact By Phone Send SMS Update Contact Email.',
             'img' => 'My_Contact_List.jpg',
-            'url' => 'https://www.amazon.com/Inna-Tarasyan-My-Calculator/dp/B0196HMGDQ/ref=sr_1_27?s=mobile-apps&ie=UTF8&qid=1531046218&sr=1-27',
+            'url' => 'https://www.amazon.com/Inna-Tarasyan-My-Contact-List/dp/B01971E8P0/ref=sr_1_1?s=mobile-apps&ie=UTF8&qid=1531046218&sr=1-1',
             'type' => 'apps',
             'download_count' => 115
         ];
@@ -323,6 +332,24 @@ class seed extends CI_Controller {
             'url' => 'https://www.amazon.com/Inna-Tarasyan-Spell-Checker/dp/B0198TUBBG/ref=sr_1_3?s=mobile-apps&ie=UTF8&qid=1531046218&sr=1-3',
             'type' => 'apps',
             'download_count' => 305
+        ];
+
+        $applications[] = [
+            'name' => 'Crypto Trading Info.',
+            'desc' => 'My Coin Trading Project allows online tracking of the changes in key indicators of the Crypto-currency, including the Social Volume Changes in the Reddit and Twitter, etc.',
+            'img' => 'crypto.jpg',
+            'url' => 'http://cryptotradinginfo.online',
+            'type' => 'web',
+            'download_count' => 0
+        ];
+
+        $applications[] = [
+            'name' => 'My Personal Home Page',
+            'desc' => 'Mu Personal Home Page, implemented using Laravel Framework',
+            'img' => 'home.png',
+            'url' => 'http://innatarasyan.online',
+            'type' => 'web',
+            'download_count' => 0
         ];
 
 

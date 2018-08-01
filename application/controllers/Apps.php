@@ -90,7 +90,7 @@ class Apps extends CI_Controller
                 $array = [
                     '<a href="'.base_url('MyApp/index/').$r->id.'">'.$r->name.'</a>',
                     substr($r->desc, 0, 60)."..",
-                    '<img src="'.base_url().'assets/images/apps/'.$r->img.'" style="width:100%;max-width:300px" title="'.$r->img.'" class="myImg"></img>',
+                    '<img src="'.base_url().'assets/images/apps/'.$r->img.'" style="width:100%;max-width:200px" title="'.$r->img.'" class="myImg"></img>',
                     '<a href="'.$r->url.'">'.$r->url.'</a>',
                     $r->type
                 ];
