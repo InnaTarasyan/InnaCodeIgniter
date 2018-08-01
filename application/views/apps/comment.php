@@ -1,5 +1,5 @@
 <?php foreach($items as $item){ ?>
-<li id="li-comment-<?= $item['id'] ?>" class="comment even <?= ($item['user_id'] == $application->user_id) ?  'bypostauthor odd' : '' ?>" >
+<li id="li-comment-<?= $item['id'] ?>" class="comment even" >
     <div id="comment-<?= $item['id'] ?>" class="comment-container" >
         <!-- .comment-author .vcard -->
         <div class="comment-author vcard" >

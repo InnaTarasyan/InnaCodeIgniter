@@ -18,39 +18,55 @@ class Menu_m extends CI_Model {
     }
 
 
+    public function insert_menus($menus){
+        $this->db->from('menus');
+        $query = $this->db->get();
+        $rowcount = $query->num_rows();
+        if($rowcount == 0) {
+            foreach ($menus as $menu){
+                $this->db->insert('menus', $menu);
+            }
+        }
+    }
+
     public function get_menus(){
 
-        $this->db->select('*');
-        $this->db->from('menus');
-        $this->db->where('parent', 0);
+        if ($this->db->table_exists('menus')){
+            $this->db->select('*');
+            $this->db->from('menus');
+            $this->db->where('parent', 0);
 
-        $parent = $this->db->get();
+            $parent = $this->db->get();
 
-        $menus = $parent->result();
-        $i=0;
-        foreach($menus as $p_menu){
+            $menus = $parent->result();
+            $i=0;
+            foreach($menus as $p_menu){
 
-            $menus[$i]->sub = $this->sub_menus($p_menu->id);
-            $i++;
+                $menus[$i]->sub = $this->sub_menus($p_menu->id);
+                $i++;
+            }
+            return $menus;
         }
-        return $menus;
+
     }
 
     public function sub_menus($id){
 
-        $this->db->select('*');
-        $this->db->from('menus');
-        $this->db->where('parent', $id);
+        if ($this->db->table_exists('menus')){
+            $this->db->select('*');
+            $this->db->from('menus');
+            $this->db->where('parent', $id);
 
-        $child = $this->db->get();
-        $menus = $child->result();
-        $i=0;
-        foreach($menus as $p_menu){
+            $child = $this->db->get();
+            $menus = $child->result();
+            $i=0;
+            foreach($menus as $p_menu){
 
-            $menus[$i]->sub = $this->sub_menus($p_menu->id);
-            $i++;
+                $menus[$i]->sub = $this->sub_menus($p_menu->id);
+                $i++;
+            }
+            return $menus;
         }
-        return $menus;
     }
 
 

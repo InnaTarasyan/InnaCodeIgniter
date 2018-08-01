@@ -17,14 +17,14 @@
             <div class="table-responsive">
                 <table id="app-table" class="table table-striped" style="width: 100%">
                     <thead>
-                    <tr>
-                        <td style="text-align: center"> App Name </td>
-                        <td style="text-align: center"> App Description </td>
-                        <td style="text-align: center"> Image </td>
-                        <td style="text-align: center"> App URL </td>
-                        <td style="text-align: center"> Type </td>
-                        <td style="text-align: center"> Download Count </td>
-                    </tr>
+                        <tr>
+                            <td style="text-align: center"> App Name </td>
+                            <td style="text-align: center"> App Description </td>
+                            <td style="text-align: center"> Image </td>
+                            <td style="text-align: center"> App URL </td>
+                            <td style="text-align: center"> Type </td>
+                            <td style="text-align: center"> Download Count </td>
+                        </tr>
                     </thead>
                     <tbody>
                     </tbody>
@@ -42,13 +42,13 @@
             <div class="table-responsive">
                 <table id="web-app-table" class="table table-striped" style="width: 100%">
                     <thead>
-                    <tr>
-                        <td style="text-align: center"> App Name </td>
-                        <td style="text-align: center"> App Description </td>
-                        <td style="text-align: center"> Image </td>
-                        <td style="text-align: center"> App URL </td>
-                        <td style="text-align: center"> Type </td>
-                    </tr>
+                        <tr>
+                            <td style="text-align: center"> App Name </td>
+                            <td style="text-align: center"> App Description </td>
+                            <td style="text-align: center"> Image </td>
+                            <td style="text-align: center"> App URL </td>
+                            <td style="text-align: center"> Type </td>
+                        </tr>
                     </thead>
                     <tbody>
                     </tbody>

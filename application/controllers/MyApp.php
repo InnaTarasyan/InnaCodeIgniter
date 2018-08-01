@@ -26,29 +26,41 @@ class MyApp extends CI_Controller
                     'comments' => $comments ]);
         }  else if ($this->input->server('REQUEST_METHOD') == 'POST'){
 
+
             /* Load form helper */
             $this->load->helper(array('form'));
+            $user_id = $this->session->userdata('user_id');
 
-
-
-            /* Set validation rule for name field in the form */
             $this->form_validation->set_rules('text', 'text', 'required');
-            $this->form_validation->set_rules('name', 'name', 'required');
-            $this->form_validation->set_rules('email', 'email', 'required');
 
+            if(!$user_id){
+
+//                $this->form_validation->set_rules('text', 'text', 'required');
+                $this->form_validation->set_rules('name', 'name', 'required');
+                $this->form_validation->set_rules('email', 'email', 'valid_email|required');
+
+
+
+            }
 
             if ($this->form_validation->run() == FALSE) {
-                echo 'Fails';
-                $this->load->view('apps/application',  ['application' => $application,
-                    'comments' => $comments, validation_errors()] );
-            } else {
 
-                 $data['text'] = $this->input->post('text');
-                 $data['application_id'] = $application->id;
-                 $data['parent_id'] = $this->input->post('comment_parent');
-                 $data['name'] = $this->input->post('name');
-                 $data['email'] = $this->input->post('name');
-                 $data['site'] = $this->input->post('site');
+                return $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200)
+                    ->set_output(json_encode(array(
+                        'error' => validation_errors(),
+                    )));
+            }
+
+                $data['text'] = $this->input->post('text');
+                $data['application_id'] = $application->id;
+                $data['parent_id'] = $this->input->post('comment_parent');
+                $data['name'] =   $this->session->userdata('user_name') ?  $this->session->userdata('user_name') : $this->input->post('name');
+                $data['email'] = $this->session->userdata('user_email') ? $this->session->userdata('user_email') : $this->input->post('email');
+                $data['site'] = $this->input->post('site');
+
+                $data['user_id'] =  $this->session->userdata('user_id');
 
                 $data['id'] =  $this->Apps_model->add_comment($data);
 
@@ -66,7 +78,7 @@ class MyApp extends CI_Controller
                         'comment' => $view_comment,
                     )));
 
-            }
+//            }
 
         }
 

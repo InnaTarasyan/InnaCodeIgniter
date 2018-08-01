@@ -8,10 +8,27 @@ class Apps_Model extends CI_Model
         $this->load->database();
     }
 
+    public function add_all_applications($applications){
+
+        $this->db->from('applications');
+        $query = $this->db->get();
+        $rowcount = $query->num_rows();
+        if($rowcount == 0) {
+            foreach ($applications as $app){
+                $this->db->insert('applications', $app);
+            }
+        }
+
+    }
+
     public function get_apps($type)
     {
-        $this->db->where('type', $type);
-        return $this->db->get("applications");
+        if ($this->db->table_exists('applications')) {
+            $this->db->where('type', $type);
+            return $this->db->get("applications");
+        } else {
+            return null;
+        }
     }
 
     public function get_app($id){

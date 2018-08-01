@@ -17,9 +17,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
+                <?php if(isset($menu)) { ?>
                 <?php foreach ($menu as $item){ ?>
                     <li> <a href="<?php echo base_url().$item->path;;?>"> <?= $item->title; ?> </a>  </li>
-                <?php  } ?>
+                <?php  }} ?>
             </ul>
             <?php if(isset($user_id)) { ?>
                 <ul class="nav navbar-nav navbar-right">

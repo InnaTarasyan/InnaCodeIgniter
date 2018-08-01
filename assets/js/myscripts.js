@@ -30,8 +30,8 @@ jQuery(document).ready(function($) {
                 success: function(html) {
 
                     if(html.error) {
-                        $('.wrap_result').css('color','red').append('<br /><strond>Ошибка: </strong>' + html.error.join('<br />'));
-                        $('.wrap_result').delay(2000).fadeOut(500);
+                        $('.wrap_result').css('color','red').append('<br /><strond>Ошибка: </strong>' + html.error + ('<br />'));
+                        $('.wrap_result').delay(5000).fadeOut(500);
                     }
                     else if(html.success) {
                         $('.wrap_result')
@@ -61,10 +61,9 @@ jQuery(document).ready(function($) {
 
                 },
                 error:function() {
-                    $('.wrap_result').css('color','red').append('<br /><strond>Ошибка: </strong>');
-                    $('.wrap_result').delay(2000).fadeOut(500, function() {
-                        $('#cancel-comment-reply-link').click();
-                    });
+
+                    $('.wrap_result').css('color','red').append('<br /><strond>Ошибка: </strong><br />');
+                    $('.wrap_result').delay(2000).fadeOut(500);
 
                 }
 

@@ -84,31 +84,37 @@ class Apps extends CI_Controller
         $apps = $this->Apps_model->get_apps($type);
         $data = array();
 
-        foreach($apps->result() as $r) {
+        if(isset($apps)){
+            foreach($apps->result() as $r) {
 
-            $array = [
-                '<a href="'.base_url('MyApp/index/').$r->id.'">'.$r->name.'</a>',
-                 substr($r->desc, 0, 60)."..",
-                '<img src="'.base_url().'assets/images/apps/'.$r->img.'" style="width:100%;max-width:300px" title="'.$r->img.'" class="myImg"></img>',
-                '<a href="'.$r->url.'">'.$r->url.'</a>',
-                $r->type
-            ];
+                $array = [
+                    '<a href="'.base_url('MyApp/index/').$r->id.'">'.$r->name.'</a>',
+                    substr($r->desc, 0, 60)."..",
+                    '<img src="'.base_url().'assets/images/apps/'.$r->img.'" style="width:100%;max-width:300px" title="'.$r->img.'" class="myImg"></img>',
+                    '<a href="'.$r->url.'">'.$r->url.'</a>',
+                    $r->type
+                ];
 
-            if($type= "apps"){
-                $array[] =  $r->download_count;
+                if($type= "apps"){
+                    $array[] =  $r->download_count;
+                }
+
+                $data[] = $array;
             }
 
-            $data[] = $array;
         }
 
         $output = array(
             "draw" => $draw,
-            "recordsTotal" => $apps->num_rows(),
-            "recordsFiltered" => $apps->num_rows(),
+            "recordsTotal" =>  isset($apps) ?  $apps->num_rows() : 0,
+            "recordsFiltered" => isset($apps) ?  $apps->num_rows() : 0,
             "data" => $data
         );
+
         echo json_encode($output);
         exit();
+
+
     }
 
 

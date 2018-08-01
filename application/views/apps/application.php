@@ -80,17 +80,17 @@
                            <br/>
 
 
-                           <?php if($user_id) { ?>
+<!--                           --><?php //if($user_id) { ?>
                            <!-- END TRACKBACK & PINGBACK -->
                            <div id="respond">
                                <h3 id="reply-title">Leave a <span>Reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">Cancel reply</a></small></h3>
                                <form action="<?= base_url(); ?>index.php/MyApp/index/<?= $application->id ?>#commentform" method="post" id="commentform">
 
-                                   <p class="user-info comment-form-author"><label for="author">Name</label> <input id="name" name="name" type="text" value="" size="30" aria-required="true" /></p>
-                                   <p class="user-info comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
-
-
-                                   <p class="user-info comment-form-url"><label for="url">Website</label><input id="url" name="site" type="text" value="" size="30" /></p>
+                                   <?php if(!$user_id) { ?>
+                                       <p class="user-info comment-form-author"><label for="author">Name</label> <input id="name" name="name" type="text" value="" size="30" aria-required="true" /></p>
+                                       <p class="user-info comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
+                                       <p class="user-info comment-form-url"><label for="url">Website</label><input id="url" name="site" type="text" value="" size="30" /></p>
+                                   <?php } ?>
 
                                    <p class="comment-form-comment"><label for="comment">Your comment</label><textarea class="my-comment" id="comment" name="text" cols="45" rows="8"></textarea></p>
                                    <div class="clear"></div>
@@ -103,9 +103,9 @@
                                </form>
                            </div>
                            <!-- #respond -->
-                           <?php } else { ?>
-                               <center><b><a href="<?= base_url('user/login_view'); ?>"> Please Log in to Leave a Reply! </a> </b></center>
-                           <?php } ?>
+<!--                           --><?php //} else { ?>
+<!--                               <center><b><a href="--><?//= base_url('user/login_view'); ?><!--"> Please Log in to Leave a Reply! </a> </b></center>-->
+<!--                           --><?php //} ?>
 
 
                        </div>
